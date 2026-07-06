@@ -1,0 +1,124 @@
+
+> avanti-gestor-listas@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.35
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (101kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (231kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+ ✓ Compiled successfully
+   Skipping validation of types
+   Linting ...
+   Collecting page data ...
+ ⚠ Sending SIGTERM signal to Next.js build worker due to timeout of 60 seconds. Subsequent errors may be a result of the worker exiting.
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⚠ Sending SIGTERM signal to Next.js build worker due to timeout of 60 seconds. Subsequent errors may be a result of the worker exiting.
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⚠ Restarted collecting page data for /_app because it took more than 60 seconds
+ ⚠ See more info here https://nextjs.org/docs/messages/static-page-generation-timeout
+ ⚠ Restarted collecting page data for /_app because it took more than 60 seconds
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⚠ Restarted collecting page data for /api/actualizaciones/calcular because it took more than 60 seconds
+ ⚠ See more info here https://nextjs.org/docs/messages/static-page-generation-timeout
+ ⚠ Restarted collecting page data for /api/archivos/generar because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/configuracion/grupos because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/configuracion/cadenas because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/configuracion/skus because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/email/enviar because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/configuracion/marcas because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/listas because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/simulaciones/[id]/ejecutar because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/simulaciones/[id]/replicar because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/simulaciones because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/simulaciones/[id] because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/simulador-comercio/guardar because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/simulador-comercio/ejecutar/[id] because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/simulador because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /favicon.ico because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /actualizaciones/[id] because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /actualizaciones/nueva because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /actualizaciones because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /configuracion/cadenas because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /configuracion/grupos because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /configuracion/marcas because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /configuracion/skus because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /dashboard because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /posicionamiento because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /listas because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /simulador-comercio because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /login because it took more than 60 seconds
+ ⚠ Restarted collecting page data for / because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /verificacion because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /simulador because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /_not-found because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/listas/generar because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/tmp-monitor because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/simulador-comercio/generar because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/verificacion/aprobar because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/verificacion/historial because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/posicionamiento because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/simulador-comercio because it took more than 60 seconds
+ ⚠ Restarted collecting page data for /api/verificacion because it took more than 60 seconds
+ ⚠ Sending SIGTERM signal to Next.js build worker due to timeout of 60 seconds. Subsequent errors may be a result of the worker exiting.
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+ ⨯ Next.js build worker exited with code: null and signal: SIGTERM
+
+> Build error occurred
+Error: Collecting page data for /api/archivos/generar is still timing out after 2 attempts. See more info here https://nextjs.org/docs/messages/page-data-collection-timeout
+    at onRestart (D:\Flowstica\Projects\gestor-listas\node_modules\next\dist\build\index.js:299:27)
+    at Worker.isPageStatic (D:\Flowstica\Projects\gestor-listas\node_modules\next\dist\lib\worker.js:104:40)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Span.traceAsyncFn (D:\Flowstica\Projects\gestor-listas\node_modules\next\dist\trace\trace.js:154:20)
+    at async D:\Flowstica\Projects\gestor-listas\node_modules\next\dist\build\index.js:1243:56
+    at async Span.traceAsyncFn (D:\Flowstica\Projects\gestor-listas\node_modules\next\dist\trace\trace.js:154:20)
+    at async Promise.all (index 19)
+    at async D:\Flowstica\Projects\gestor-listas\node_modules\next\dist\build\index.js:1175:17
+    at async Span.traceAsyncFn (D:\Flowstica\Projects\gestor-listas\node_modules\next\dist\trace\trace.js:154:20)
+    at async D:\Flowstica\Projects\gestor-listas\node_modules\next\dist\build\index.js:1098:124
+EXIT=1

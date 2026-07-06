@@ -1,0 +1,242 @@
+Total rows: 238
+
+monitor_id | descripcion | marca | sub_familia | grupo_comparable | ultimo_pvp | ultima_fecha
+------------------------------------------------------------------------------------------------------------------------
+218 | Mayonesa CAÑUELAS 250 g | CAÑUELAS | Condimentos | NULL | 215 | 2026-05-18
+285 | Salsa de Soja HEINZ Premium 150 g | HEINZ | Condimentos | NULL | 345 | 2026-05-18
+103 | Tapa empanadas AVANTI horno copetín 24 un. | AVANTI | Copetin | 1 | 194 | 2026-05-31
+112 | Tapas para Empanadas LA ESPECIALISTA Copetín 24 Unidades | LA ESPECIALISTA | Copetin | 1 | 194 | 2026-05-31
+376 | Empanada TIENDA INGLESA Capresse (1 un.) | TIENDA INGLESA | Empanadas x 1 | NULL | 99 | 2026-05-31
+369 | Empanada TIENDA INGLESA Carne Suave (1 un.) | TIENDA INGLESA | Empanadas x 1 | NULL | 99 | 2026-05-31
+373 | Empanada TIENDA INGLESA Jamón y Queso (1 un.) | TIENDA INGLESA | Empanadas x 1 | NULL | 99 | 2026-05-31
+358 | Empanada TIENDA INGLESA Pollo (1 un.) | TIENDA INGLESA | Empanadas x 1 | NULL | 99 | 2026-05-31
+380 | Empanada TIENDA INGLESA Queso y Cebolla (1 un.) | TIENDA INGLESA | Empanadas x 1 | NULL | 99 | 2026-05-31
+379 | Empanadas BLÉ Jamón y Queso y Carne Horneadas y Congeladas (10 un.) | BLÉ | Empanadas x 10 | NULL | 720 | 2026-05-31
+104 | Tapa empanadas AVANTI caseras x 15 un. 437 g | AVANTI | Empanadas x 12 | 1 | 150 | 2026-05-31
+93 | Tapas para Empanadas Hojaldradas AVANTI 15 Unidades | AVANTI | Empanadas x 12 | 1 | 150 | 2026-05-31
+126 | Tapas para Empanadas Light sin Hojaldrar AVANTI 12 Unidades | AVANTI | Empanadas x 12 | 3 | 196 | 2026-05-31
+99 | Tapa empanadas LA ESPECIALISTA caseras x 15 un. 530 g | LA ESPECIALISTA | Empanadas x 12 | 1 | 179 | 2026-05-31
+98 | Tapa empanadas LA ESPECIALISTA hojaldradas x 15 un. 530 g | LA ESPECIALISTA | Empanadas x 12 | 1 | 179 | 2026-05-31
+125 | Tapas para Empanadas LA ESPECIALISTA Calabaza y Zanahoria (12 un.) | LA ESPECIALISTA | Empanadas x 12 | 5 | 225 | 2026-05-31
+254 | Tapas para Empanadas Hojaldradas TIENDA INGLESA 12 Unidades | TIENDA INGLESA | Empanadas x 12 | NULL | 159 | 2026-05-31
+111 | Tapas para Empanadas Hojaldradas TIENDA INGLESA 12 Unidades | TIENDA INGLESA | Empanadas x 12 | NULL | 159 | 2026-05-31
+360 | Empanadas de Carne sin Gluten HELIX 2 Unidades | HELIX | Empanadas x 2 | NULL | 244 | 2026-05-31
+370 | Empanadas de Jamón y Queso sin Gluten HELIX 2 Unidades | HELIX | Empanadas x 2 | 3 | 244 | 2026-05-31
+122 | Tapa empanadas AVANTI horno 20 un. | AVANTI | Empanadas x 20 | 1 | 223 | 2026-05-31
+253 | Tapa empanadas AVANTI horno 20 un. | AVANTI | Empanadas x 20 | 1 | 223 | 2026-05-31
+96 | Tapas para Empanadas Tipo Casera AVANTI x 20 Tapas 600 gr | AVANTI | Empanadas x 20 | 1 | 223 | 2026-05-31
+109 | Tapas para Empanadas Tipo Casera AVANTI x 20 Tapas 600 gr | AVANTI | Empanadas x 20 | 1 | 223 | 2026-05-31
+97 | Tapa empanadas LA ESPECIALISTA caseras 20 un. 720 g | LA ESPECIALISTA | Empanadas x 20 | 1 | 236 | 2026-05-31
+255 | Tapas para Empanadas LA ESPECIALISTA Hojaldre 20 Unidades | LA ESPECIALISTA | Empanadas x 20 | 1 | 236 | 2026-05-31
+124 | Tapas para Empanadas LA ESPECIALISTA Hojaldre 20 Unidades | LA ESPECIALISTA | Empanadas x 20 | 1 | 236 | 2026-05-31
+118 | Tapas para Empanadas Hojaldradas TIENDA INGLESA 20 Unidades | TIENDA INGLESA | Empanadas x 20 | NULL | 201 | 2026-05-31
+101 | Tapas para Empanadas Hojaldradas TIENDA INGLESA 20 Unidades | TIENDA INGLESA | Empanadas x 20 | NULL | 201 | 2026-05-31
+120 | Tapas para Empanadas Tipo Casera TIENDA INGLESA 20 Unidades | TIENDA INGLESA | Empanadas x 20 | 2 | 201 | 2026-05-31
+128 | Tapas para Empanadas Tipo Casera TIENDA INGLESA 20 Unidades | TIENDA INGLESA | Empanadas x 20 | 2 | 201 | 2026-05-31
+361 | Empanadas de Jamón y Queso PAGNIFIQUE x 3 Unidades | PAGNIFIQUE | Empanadas x 3 | NULL | 205 | 2026-05-31
+372 | Empanadas de Jamón y Queso PAGNIFIQUE x 3 Unidades | PAGNIFIQUE | Empanadas x 3 | NULL | 205 | 2026-05-31
+375 | Empanadas de Carne TIENDA INGLESA (6 un.) 420 g | TIENDA INGLESA | Empanadas x 6 | NULL | 397 | 2026-05-31
+365 | Empanadas de Carne TIENDA INGLESA (6 un.) 420 g | TIENDA INGLESA | Empanadas x 6 | NULL | 397 | 2026-05-31
+381 | Empanadas de Espinaca y Queso TIENDA INGLESA (6 un.) 420 g | TIENDA INGLESA | Empanadas x 6 | NULL | 397 | 2026-05-31
+366 | Empanadas de Espinaca y Queso TIENDA INGLESA (6 un.) 420 g | TIENDA INGLESA | Empanadas x 6 | NULL | 397 | 2026-05-31
+377 | Empanadas de Jamón y Queso TIENDA INGLESA (6 un.) 420 g | TIENDA INGLESA | Empanadas x 6 | NULL | 397 | 2026-05-31
+378 | Empanadas de Jamón y Queso TIENDA INGLESA (6 un.) 420 g | TIENDA INGLESA | Empanadas x 6 | NULL | 397 | 2026-05-31
+374 | Empanadas de Queso y Aceitunas TIENDA INGLESA (6 un.) 420 g | TIENDA INGLESA | Empanadas x 6 | 2 | 397 | 2026-05-31
+362 | Empanadas de Queso y Aceitunas TIENDA INGLESA (6 un.) 420 g | TIENDA INGLESA | Empanadas x 6 | 2 | 397 | 2026-05-31
+237 | COCA-COLA Light 1.5 L | COCA | Gaseosas | NULL | 60 | 2026-05-18
+240 | COCA-COLA Light 2.25 L | COCA | Gaseosas | NULL | 113 | 2026-05-18
+308 | Ravioles de jamón y queso libre de gluten 5 ESTRELLAS congelados 400 g | 5 ESTRELLAS | Libre de Gluten | NULL | 415 | 2026-05-31
+319 | Ravioles de verdura libre de gluten 5 ESTRELLAS congelados 400 g | 5 ESTRELLAS | Libre de Gluten | NULL | 415 | 2026-05-31
+313 | Panzottis de Ricota, Jamón y Verdura TIENDA INGLESA 18 Unidades | TIENDA INGLESA | Panzottis | NULL | 426 | 2026-05-31
+178 | Pesto DEL GAUCHO 350 gr | DEL GAUCHO | Pesto | NULL | 168 | 2026-05-31
+166 | Pesto Clásico FILIPPO BERIO 190 gr | FILIPPO BERIO | Pesto | NULL | 331 | 2026-05-31
+392 | Pizza de Muzarella CELILIFE 420 gr | CELILIFE | Pizzas Congeladas | NULL | 419 | 2026-05-31
+384 | Pizza con Muzzarella Masa Madre CONAPROLE 3 un. 600 g | CONAPROLE | Pizzas Congeladas | 1 | 453 | 2026-05-31
+402 | Pizza con Muzzarella Masa Madre CONAPROLE 3 un. 600 g | CONAPROLE | Pizzas Congeladas | 1 | 453 | 2026-05-31
+385 | Pizza Margarita Congelada DOS ORIENTALES 413 gr | DOS ORIENTALES | Pizzas Congeladas | NULL | 488 | 2026-05-31
+383 | Pizza congelada muzzarella x2 LA ESPECIALISTA 960 g | LA ESPECIALISTA | Pizzas Congeladas | NULL | 410 | 2026-05-31
+401 | Pizza con Muzzarella SADIA 440 gr | SADIA | Pizzas Congeladas | NULL | 324 | 2026-05-31
+390 | Pizza Mix de Quesos SADIA 440 gr | SADIA | Pizzas Congeladas | NULL | 324 | 2026-05-31
+395 | Pizza con Muzzarella y Tomate Pack Familiar SIBARITA 2 Unidades 940 gr | SIBARITA | Pizzas Congeladas | NULL | 705 | 2026-05-31
+389 | Pizza con Muzzarella y Tomate Pack Familiar SIBARITA 2 Unidades 940 gr | SIBARITA | Pizzas Congeladas | NULL | 705 | 2026-05-31
+386 | Pizza 4 Quesos TIENDA INGLESA 42 cm | TIENDA INGLESA | Pizzas Congeladas | NULL | 589 | 2026-05-31
+382 | Pizza Casera Rectangular TIENDA INGLESA (1 un.) | TIENDA INGLESA | Pizzas Congeladas | NULL | 355 | 2026-05-31
+397 | Pizza Italiana TIENDA INGLESA (1 un.) | TIENDA INGLESA | Pizzas Congeladas | NULL | 240 | 2026-05-31
+407 | Pizza Italiana TIENDA INGLESA (1 un.) | TIENDA INGLESA | Pizzas Congeladas | NULL | 240 | 2026-05-31
+393 | Pizza Muzzarella con Jamón y Aceitunas TIENDA INGLESA 42 cm | TIENDA INGLESA | Pizzas Congeladas | NULL | 555 | 2026-05-31
+387 | Pizza Muzzarella con Jamón y Aceitunas TIENDA INGLESA 42 cm | TIENDA INGLESA | Pizzas Congeladas | NULL | 555 | 2026-05-31
+398 | Pizza Muzzarella con Pepperoni TIENDA INGLESA 42 cm | TIENDA INGLESA | Pizzas Congeladas | NULL | 545 | 2026-05-31
+404 | Pizza Muzzarella TIENDA INGLESA 42 cm | TIENDA INGLESA | Pizzas Congeladas | NULL | 455 | 2026-05-31
+403 | Pizza Muzzarella TIENDA INGLESA 42 cm | TIENDA INGLESA | Pizzas Congeladas | NULL | 455 | 2026-05-31
+388 | Pizza Muzzarella TIENDA INGLESA Congelada (2 un.) | TIENDA INGLESA | Pizzas Congeladas | 2 | 534 | 2026-05-31
+400 | Pizza Muzzarella TIENDA INGLESA Congelada (2 un.) | TIENDA INGLESA | Pizzas Congeladas | 2 | 534 | 2026-05-31
+405 | Pizza TIENDA INGLESA Cheddar y Bacon 42 cm | TIENDA INGLESA | Pizzas Congeladas | NULL | 629 | 2026-05-31
+327 | Ravioles AVANTI Verdura 500 g | AVANTI | Ravioles | 1 | 320 | 2026-05-31
+292 | Ravioles de Jamón y Queso AVANTI 500 gr | AVANTI | Ravioles | 1 | 320 | 2026-05-31
+298 | Ravioles EL BUEN GUSTO de Jamón y Queso 750 gr | EL BUEN GUSTO | Ravioles | NULL | 293 | 2026-05-31
+337 | Ravioles EL BUEN GUSTO de Verdura 750 gr | EL BUEN GUSTO | Ravioles | 2 | 299 | 2026-05-31
+328 | Ravioles de Verdura Envasados al Vacío LA ESPECIALISTA 500 gr | LA ESPECIALISTA | Ravioles | 1 | 329 | 2026-05-31
+318 | Ravioles de Verdura Light LA ESPECIALISTA 500 gr | LA ESPECIALISTA | Ravioles | 1 | 329 | 2026-05-31
+310 | Ravioles jamón y queso LA ESPECIALISTA 500 g | LA ESPECIALISTA | Ravioles | NULL | 329 | 2026-05-31
+325 | Ravioles de Verdura TIENDA INGLESA 500 gr | TIENDA INGLESA | Ravioles | NULL | 296 | 2026-05-31
+331 | Ravioles de Verdura TIENDA INGLESA Masa Espinaca x 100 Unidades | TIENDA INGLESA | Ravioles | NULL | 426 | 2026-05-31
+322 | Ravioles de Verdura TIENDA INGLESA Masa Espinaca x 100 Unidades | TIENDA INGLESA | Ravioles | NULL | 426 | 2026-05-31
+297 | Ravioles Jamón y Queso TIENDA INGLESA 500 gr | TIENDA INGLESA | Ravioles | 2 | 288 | 2026-05-31
+300 | Ravioles TIENDA INGLESA de Jamón y Queso 100 Unidades | TIENDA INGLESA | Ravioles | NULL | 426 | 2026-05-31
+303 | Ravioles TIENDA INGLESA de Jamón y Queso 100 Unidades | TIENDA INGLESA | Ravioles | NULL | 426 | 2026-05-31
+332 | Ravioles TIENDA INGLESA Rellenos de Verdura 100 Unidades | TIENDA INGLESA | Ravioles | NULL | 426 | 2026-05-31
+324 | Ravioles TIENDA INGLESA Rellenos de Verdura 100 Unidades | TIENDA INGLESA | Ravioles | NULL | 426 | 2026-05-31
+304 | Ravioles de jamón y queso 5 ESTRELLAS congelados 750 g | 5 ESTRELLAS | Ravioles Congelados | NULL | 308 | 2026-05-31
+323 | Ravioles de verdura 5 ESTRELLAS 750 g | 5 ESTRELLAS | Ravioles Congelados | 2 | 316 | 2026-05-31
+317 | Ravioles de Verdura Congelados LOS ABUELOS  1 Kg | LOS ABUELOS | Ravioles Congelados | 1 | 501 | 2026-05-31
+336 | Ravioles de Verdura SPEZIA  750 gr | SPEZIA | Ravioles Congelados | NULL | 503 | 2026-05-31
+326 | Ravioles Congelados de Verdura TIENDA INGLESA 750 gr | TIENDA INGLESA | Ravioles Congelados | NULL | 269 | 2026-05-31
+316 | Ravioles Congelados de Verdura TIENDA INGLESA 750 gr | TIENDA INGLESA | Ravioles Congelados | NULL | 269 | 2026-05-31
+209 | Salsa 4 Quesos AVANTI 220 g | AVANTI | Salsas 200 g | 1 | 189 | 2026-05-31
+226 | Salsa bolognesa AVANTI 220 g | AVANTI | Salsas 200 g | 1 | 189 | 2026-05-31
+198 | Salsa carusso AVANTI 220 g | AVANTI | Salsas 200 g | 1 | 189 | 2026-05-31
+186 | Salsa Napolitana GOURMET a Base de Tomates 206 g | GOURMET | Salsas 200 g | 2 | 39 | 2026-05-31
+155 | Salsa Napolitana GOURMET a Base de Tomates 206 g | GOURMET | Salsas 200 g | 2 | 39 | 2026-05-31
+220 | Salsa 4 quesos LA ESPECIALISTA 200 g | LA ESPECIALISTA | Salsas 200 g | 1 | 225 | 2026-05-31
+202 | Salsa Bolognesa LA ESPECIALISTA 200 gr | LA ESPECIALISTA | Salsas 200 g | 1 | 225 | 2026-05-31
+174 | Salsa Carusso LA ESPECIALISTA 200 g | LA ESPECIALISTA | Salsas 200 g | 1 | 225 | 2026-05-31
+213 | Albóndigas de Carne con Salsa TIENDA INGLESA (Porción) | TIENDA INGLESA | Salsas 200 g | NULL | 1080 | 2026-05-31
+272 | Salsa de Tomate BARILLA Napolitana 400 g | BARILLA | Salsas 370 g | NULL | 215 | 2026-05-18
+258 | Salsa de Tomate BARILLA Napolitana 400 g | BARILLA | Salsas 370 g | NULL | 259 | 2026-05-18
+183 | Salsa de Tomate CAMPOCLARO Orgánica Mediterráneo 570 g | CAMPOCLARO | Salsas 370 g | NULL | 310 | 2026-05-31
+190 | Salsa de Tomate CAMPOCLARO Orgánica Mediterráneo 570 g | CAMPOCLARO | Salsas 370 g | NULL | 310 | 2026-05-31
+177 | Salsa Rústica CIRIO a la Arrabbiata 420 g | CIRIO | Salsas 370 g | NULL | 184 | 2026-05-31
+160 | Salsa de Tomate EMIGRANTE Frito 350 g | EMIGRANTE | Salsas 370 g | NULL | 259 | 2026-05-31
+157 | Salsa de Tomate GOURMET Concentrada con Albahaca 1.030 Kg | GOURMET | Salsas 370 g | NULL | 113 | 2026-05-31
+184 | Salsa de Tomate GOURMET Concentrada con Albahaca 1.030 Kg | GOURMET | Salsas 370 g | NULL | 113 | 2026-05-31
+171 | Salsa de Tomate GOURMET Napolitana 1030 g | GOURMET | Salsas 370 g | NULL | 113 | 2026-05-31
+189 | Salsa de Tomate GOURMET Napolitana 1030 g | GOURMET | Salsas 370 g | NULL | 113 | 2026-05-31
+200 | Salsa Bolognesa LA ESPECIALISTA  370 gr | LA ESPECIALISTA | Salsas 370 g | 1 | 348 | 2026-05-31
+216 | Salsa Carusso LA ESPECIALISTA 370 gr | LA ESPECIALISTA | Salsas 370 g | 1 | 404 | 2026-05-31
+192 | Tuco con Pollo LA ESPECIALISTA 370 gr | LA ESPECIALISTA | Salsas 370 g | 1 | 380 | 2026-05-31
+172 | Salsa de Tomate PONTEVEDRA Mediterranea 340 g | PONTEVEDRA | Salsas 370 g | NULL | 80 | 2026-05-31
+175 | Salsa de Tomate PONTEVEDRA Pronto Pasta 340 g | PONTEVEDRA | Salsas 370 g | NULL | 80 | 2026-05-31
+162 | Salsa RUMMO All Arrabbiata 340 g | RUMMO | Salsas 370 g | NULL | 254 | 2026-05-31
+277 | Fideos ADRIA Moña Chica Corbatita 500 gr | ADRIA | Sin Clasificar | NULL | 404 | 2026-05-18
+266 | Fideos ADRIA Nido 1 500gr | ADRIA | Sin Clasificar | NULL | 335 | 2026-05-18
+265 | Fideos ADRIA Nido 2 500 gr | ADRIA | Sin Clasificar | NULL | 85 | 2026-05-18
+261 | Fideos ADRIA Nido 2 500 gr | ADRIA | Sin Clasificar | NULL | 139 | 2026-05-18
+284 | Fideos ADRIA Nido 3 500g | ADRIA | Sin Clasificar | NULL | 300 | 2026-05-18
+288 | Fideos ADRIA Nido Cabello de Ángel 500g | ADRIA | Sin Clasificar | NULL | 300 | 2026-05-18
+282 | Fideos Penne Rigate BARILLA 500 gr | BARILLA | Sin Clasificar | NULL | 221 | 2026-05-18
+259 | Fideos Penne Rigate BARILLA 500 gr | BARILLA | Sin Clasificar | NULL | 39 | 2026-05-18
+276 | Fideos Spaghetti N°5 BARILLA 500 gr | BARILLA | Sin Clasificar | NULL | 335 | 2026-05-18
+278 | Fideos Spaghetti N°5 BARILLA 500 gr | BARILLA | Sin Clasificar | NULL | 215 | 2026-05-18
+233 | Rapiditas BIMBO Clásicas (10 un.) | BIMBO | Sin Clasificar | NULL | 70 | 2026-05-18
+289 | Arroz BLUE PATNA 1 Kg | BLUE PATNA | Sin Clasificar | NULL | 330 | 2026-05-18
+299 | Café Instantáneo BRACAFÉ 12 Sobres | BRACAFÉ | Sin Clasificar | NULL | 550 | 2026-05-18
+296 | Chorizos Extra CATTIVELLI (Kg) | CATTIVELLI | Sin Clasificar | NULL | 335 | 2026-05-18
+290 | Jamón Cocido Cuadrille Extra CATTIVELLI  (Kg) | CATTIVELLI | Sin Clasificar | NULL | 955 | 2026-05-18
+267 | Salchicha Parrillera CATTIVELLI Envasado al Vacío (Kg) | CATTIVELLI | Sin Clasificar | NULL | 336 | 2026-05-18
+102 | Jamón Cocido Etiqueta Azul CENTENARIO (Kg) | CENTENARIO | Sin Clasificar | NULL | 233.1 | 2026-05-18
+257 | Palitos Stickletti CHIO 125 gr | CHIO | Sin Clasificar | NULL | 80 | 2026-05-18
+232 | COCA-COLA Original 1.5 L | COCA | Sin Clasificar | NULL | 60 | 2026-05-18
+238 | COCA-COLA Zero 1.5 L | COCA | Sin Clasificar | NULL | 395 | 2026-05-18
+234 | COCA-COLA Zero 2.25 L | COCA | Sin Clasificar | NULL | 357 | 2026-05-18
+264 | Capellini COLAVITA Angel Hair Nests 500 gr | COLAVITA | Sin Clasificar | NULL | 395 | 2026-05-18
+273 | Tagliatelle a Nido COLAVITA 500 gr | COLAVITA | Sin Clasificar | NULL | 335 | 2026-05-18
+95 | Queso Muzzarella CONAPROLE (Kg) | CONAPROLE | Sin Clasificar | NULL | 126 | 2026-05-18
+295 | Queso Colonia Especial EL GAUCHO de Corte (Kg) | EL GAUCHO | Sin Clasificar | NULL | 245 | 2026-05-18
+269 | Galleta Chiquilín de Chocolate EL TRIGAL 220 gr | EL TRIGAL | Sin Clasificar | NULL | 945 | 2026-05-18
+293 | Toalla de Papel ELITE Ultra 3 Rollos x 210 Paños | ELITE | Sin Clasificar | NULL | 540 | 2026-05-18
+294 | Limpiador Líquido Multiusos FABULOSO Frescura Antibacterial Lavanda 5 L | FABULOSO | Sin Clasificar | NULL | 210 | 2026-05-18
+262 | Palillos para Dientes GABOARDI Caja x 80 Unidades | GABOARDI | Sin Clasificar | NULL | 113 | 2026-05-18
+283 | Cepillo Dental GUM Ortodoncia | GUM | Sin Clasificar | NULL | 221 | 2026-05-18
+274 | Grisines LA TRIGUEÑA Integrales 150 gr | LA TRIGUEÑA | Sin Clasificar | NULL | 60 | 2026-05-18
+287 | Fideos Fettuccini LAS ACACIAS Integral 400 gr | LAS ACACIAS | Sin Clasificar | NULL | 260 | 2026-05-18
+281 | Fideos LAS ACACIAS Trigo Duro Fettuccini 500 gr | LAS ACACIAS | Sin Clasificar | NULL | 215 | 2026-05-18
+268 | Fideos Fettuccine MONTEGRAPPA 200 gr | MONTEGRAPPA | Sin Clasificar | NULL | 320 | 2026-05-18
+291 | Salmón Chileno Fresco Premium MOWI (Kg) | MOWI | Sin Clasificar | NULL | 415 | 2026-05-18
+280 | Agua Mineral Natural sin Gas NATIVA 6 L | NATIVA | Sin Clasificar | NULL | 795 | 2026-05-18
+275 | Alfajor de Chocolate PORTEZUELO (6 un.) | PORTEZUELO | Sin Clasificar | NULL | 1080 | 2026-05-18
+235 | Refresco SALUS Tónica sin Azúcar con Gas 1.5 L | SALUS | Sin Clasificar | NULL | 357 | 2026-05-18
+243 | SCHWEPPES Citrus sin Azúcar 1.5 L | SCHWEPPES | Sin Clasificar | NULL | 357 | 2026-05-18
+239 | SCHWEPPES Pomelo sin Azúcar 1.5 L | SCHWEPPES | Sin Clasificar | NULL | 395 | 2026-05-18
+230 | SCHWEPPES Tónica sin Azúcar 1.5 L | SCHWEPPES | Sin Clasificar | NULL | 70 | 2026-05-18
+241 | SPRITE sin Azúcar 2.25 L | SPRITE | Sin Clasificar | NULL | 139 | 2026-05-18
+260 | Fideos de Arroz STAR LION 200 gr | STAR LION | Sin Clasificar | NULL | 85 | 2026-05-18
+244 | Ajos TIENDA INGLESA (2 un.) | TIENDA INGLESA | Sin Clasificar | NULL | 205 | 2026-05-18
+227 | Buñuelos de Espinaca Fritos TIENDA INGLESA (Kg) | TIENDA INGLESA | Sin Clasificar | NULL | 930 | 2026-05-19
+229 | Cebolla Colorada Granel TIENDA INGLESA (Kg) | TIENDA INGLESA | Sin Clasificar | NULL | 310 | 2026-05-18
+242 | Cebolla en Malla TIENDA INGLESA (Kg) | TIENDA INGLESA | Sin Clasificar | NULL | 339 | 2026-05-18
+211 | Ensalada Balance TIENDA INGLESA (1 un.) | TIENDA INGLESA | Sin Clasificar | NULL | 59 | 2026-05-18
+270 | Fideos Fettuccine TIENDA INGLESA 500 gr | TIENDA INGLESA | Sin Clasificar | NULL | 879 | 2026-05-18
+100 | Harina Tipo 0000 TIENDA INGLESA  1 Kg | TIENDA INGLESA | Sin Clasificar | NULL | 129.6 | 2026-05-18
+252 | Kiwi TIENDA INGLESA a Granel (kg) | TIENDA INGLESA | Sin Clasificar | NULL | 225 | 2026-05-18
+212 | Lasagna con Jamón, Queso y Verdura TIENDA INGLESA Porción | TIENDA INGLESA | Sin Clasificar | NULL | 320 | 2026-05-19
+205 | Lasagna con Jamón, Queso y Verdura TIENDA INGLESA Porción | TIENDA INGLESA | Sin Clasificar | NULL | 320 | 2026-05-19
+217 | Lasagna de Masa Verde Rellena de Carne TIENDA INGLESA (1 un.) | TIENDA INGLESA | Sin Clasificar | NULL | 335 | 2026-05-19
+203 | Lasagna de Masa Verde Rellena de Carne TIENDA INGLESA (1 un.) | TIENDA INGLESA | Sin Clasificar | NULL | 335 | 2026-05-19
+222 | Lasagna de Pollo TIENDA INGLESA (1 un.) | TIENDA INGLESA | Sin Clasificar | NULL | 335 | 2026-05-19
+215 | Lasagna Familiar TIENDA INGLESA (1 un.) | TIENDA INGLESA | Sin Clasificar | NULL | 795 | 2026-05-19
+219 | Milanesa de Carne Cruda TIENDA INGLESA (Kg) | TIENDA INGLESA | Sin Clasificar | NULL | 945 | 2026-05-19
+208 | Milanesa de Carne Frita TIENDA INGLESA (Kg) | TIENDA INGLESA | Sin Clasificar | NULL | 955 | 2026-05-19
+334 | Ñoquis con Salsa Caruso TIENDA INGLESA (1 un.) | TIENDA INGLESA | Sin Clasificar | NULL | 260 | 2026-05-31
+224 | Ñoquis con Salsa Caruso TIENDA INGLESA (1 un.) | TIENDA INGLESA | Sin Clasificar | NULL | 260 | 2026-05-31
+196 | Ñoquis con Tuco de Carne TIENDA INGLESA (1 un.) | TIENDA INGLESA | Sin Clasificar | NULL | 289 | 2026-05-31
+286 | Pan Flauta TIENDA INGLESA 240 gr | TIENDA INGLESA | Sin Clasificar | NULL | 99 | 2026-05-19
+221 | Pastel de Carne TIENDA INGLESA (1 un.) | TIENDA INGLESA | Sin Clasificar | NULL | 35 | 2026-05-18
+231 | Pepino a Granel TIENDA INGLESA | TIENDA INGLESA | Sin Clasificar | NULL | 168 | 2026-05-18
+248 | Pulpa de Tomate TIENDA INGLESA Concentrada 1,030 Kg | TIENDA INGLESA | Sin Clasificar | NULL | 80 | 2026-05-18
+225 | Ravioles de Verdura con Salsa Carusso TIENDA INGLESA (1 un.) | TIENDA INGLESA | Sin Clasificar | NULL | 300 | 2026-05-19
+223 | Ravioles de Verdura con Tuco de Carne TIENDA INGLESA (1 un.) | TIENDA INGLESA | Sin Clasificar | NULL | 300 | 2026-05-19
+204 | Ravioles de Verdura con Tuco de Carne TIENDA INGLESA (1 un.) | TIENDA INGLESA | Sin Clasificar | NULL | 300 | 2026-05-19
+206 | Strogonoff de Pollo con Arroz TIENDA INGLESA (1 un.) | TIENDA INGLESA | Sin Clasificar | NULL | 235 | 2026-05-18
+228 | Strogonoff de Pollo TIENDA INGLESA (Kg) | TIENDA INGLESA | Sin Clasificar | NULL | 540 | 2026-05-19
+207 | Torta de Carne Individual TIENDA INGLESA (1 un.) | TIENDA INGLESA | Sin Clasificar | NULL | 144 | 2026-05-18
+210 | Tortilla de Papas TIENDA INGLESA al Horno (1 un.) | TIENDA INGLESA | Sin Clasificar | NULL | 245 | 2026-05-19
+214 | Tortilla de Verduras al Horno TIENDA INGLESA (1 un.) | TIENDA INGLESA | Sin Clasificar | NULL | 220 | 2026-05-19
+256 | Banana Orgánica Ecuador (Kg) | null | Sin Clasificar | NULL | 357 | 2026-05-18
+245 | Berenjena a Granel (Kg) | null | Sin Clasificar | NULL | 357 | 2026-05-18
+94 | Carne Picada Súper Especial (Kg) | null | Sin Clasificar | NULL | 53.1 | 2026-05-18
+263 | Lomo de Corvina Desespinado (Kg) | null | Sin Clasificar | NULL | 331 | 2026-05-18
+301 | Manzana Red Deliciosa (Kg) | null | Sin Clasificar | NULL | 300 | 2026-05-18
+271 | Morrón Rojo Envasado (Kg) | null | Sin Clasificar | NULL | 375 | 2026-05-18
+246 | Piña Gold (Kg) | null | Sin Clasificar | NULL | 139 | 2026-05-18
+302 | Tomate Americano a Granel (kg) | null | Sin Clasificar | NULL | 125 | 2026-05-18
+341 | Sorrentinos AVANTI 4 Quesos 500 gr | AVANTI | Sorrentinos | 1 | 322 | 2026-05-31
+349 | Sorrentinos AVANTI jamón y queso 500 g | AVANTI | Sorrentinos | 1 | 322 | 2026-05-31
+346 | Sorrentinos AVANTI jamón y queso 500 g | AVANTI | Sorrentinos | 1 | 322 | 2026-05-31
+342 | Sorrentinos de Ricotta y Espinaca AVANTI 500 gr | AVANTI | Sorrentinos | 1 | 322 | 2026-05-31
+343 | Sorrentinos de Ricotta, Dambo y Espinaca LA ESPECIALISTA 500 gr | LA ESPECIALISTA | Sorrentinos | 1 | 350 | 2026-05-31
+356 | Sorrentinos Rellenos Cuatro Quesos LA ESPECIALISTA 500 gr | LA ESPECIALISTA | Sorrentinos | 1 | 350 | 2026-05-31
+339 | Sorrentinos Rellenos de Jamón y Queso LA ESPECIALISTA 500 gr | LA ESPECIALISTA | Sorrentinos | 1 | 350 | 2026-05-31
+353 | Sorrentinos Muzzarella y Jamón LOS ABUELOS 24 Unidades | LOS ABUELOS | Sorrentinos | NULL | 836 | 2026-05-31
+340 | Sorrentinos Muzzarella y Jamón LOS ABUELOS 24 Unidades | LOS ABUELOS | Sorrentinos | NULL | 836 | 2026-05-31
+345 | Sorrentinos de Muzzarella y Jamón TIENDA INGLESA 12 unidades | TIENDA INGLESA | Sorrentinos | NULL | 561 | 2026-05-31
+347 | Sorrentinos de Muzzarella y Jamón TIENDA INGLESA 12 unidades | TIENDA INGLESA | Sorrentinos | NULL | 561 | 2026-05-31
+344 | Sorrentinos de Provolone y Tomate TIENDA INGLESA 250 gr | TIENDA INGLESA | Sorrentinos | 1 | 296 | 2026-05-31
+355 | Sorrentinos Ricotta y Nuez TIENDA INGLESA 250 gr | TIENDA INGLESA | Sorrentinos | NULL | 296 | 2026-05-31
+354 | Sorrentinos de jamón y queso 5 ESTRELLAS 750 g | 5 ESTRELLAS | Sorrentinos Congelados | 2 | 317 | 2026-05-31
+352 | Sorrentinos Congelados de Jamón y Queso sin Conservantes EL BUEN GUSTO  Linea Gourmet 1 Kg | EL BUEN GUSTO | Sorrentinos Congelados | NULL | 598 | 2026-05-31
+338 | Sorrentinos Jamón y Muzzarella SPEZIA 750 gr | SPEZIA | Sorrentinos Congelados | NULL | 822 | 2026-05-31
+279 | Tagliatelle de Albahaca AVANTI 270 gr | AVANTI | Tagliatelle | 1 | 210 | 2026-05-31
+561 | Tallarines finos AVANTI 500 g | AVANTI | Tallarines | 1 | 168 | 2026-05-31
+562 | Tallarines de yema gruesos LA ESPECIALISTA 500 g | LA ESPECIALISTA | Tallarines | 1 | 180 | 2026-05-31
+147 | Tapa rectangular AVANTI 550 g | AVANTI | Tapas Rectangulares | 1 | 223 | 2026-05-31
+151 | Tapa rectangular AVANTI 550 g | AVANTI | Tapas Rectangulares | 1 | 223 | 2026-05-31
+247 | Tapas Rectangulares con Separadores Tipo Casera AVANTI 550 gr | AVANTI | Tapas Rectangulares | 1 | 223 | 2026-05-31
+152 | Tapas Rectangulares con Separadores Tipo Casera AVANTI 550 gr | AVANTI | Tapas Rectangulares | 1 | 223 | 2026-05-31
+136 | Masa para Pascualina Rectangular Casera LA ESPECIALISTA 550 g | LA ESPECIALISTA | Tapas Rectangulares | 1 | 230 | 2026-05-31
+139 | Masa para Pascualina Rectangular LA ESPECIALISTA Light 400 gr | LA ESPECIALISTA | Tapas Rectangulares | 3 | 235 | 2026-05-31
+249 | Tapa rectangular LA ESPECIALISTA hojaldre 550 g | LA ESPECIALISTA | Tapas Rectangulares | 1 | 230 | 2026-05-31
+134 | Tapa rectangular LA ESPECIALISTA hojaldre 550 g | LA ESPECIALISTA | Tapas Rectangulares | 1 | 230 | 2026-05-31
+251 | Tapas Rectangulares Hojaldradas TIENDA INGLESA 30 x 37.5 cm 530 gr | TIENDA INGLESA | Tapas Rectangulares | NULL | 201 | 2026-05-31
+144 | Tapas Rectangulares Hojaldradas TIENDA INGLESA 30 x 37.5 cm 530 gr | TIENDA INGLESA | Tapas Rectangulares | NULL | 201 | 2026-05-31
+250 | Tapas Rectangulares Tipo Casera TIENDA INGLESA 30 x 37.5 cm 530 gr | TIENDA INGLESA | Tapas Rectangulares | NULL | 201 | 2026-05-31
+140 | Tapas Rectangulares Tipo Casera TIENDA INGLESA 30 x 37.5 cm 530 gr | TIENDA INGLESA | Tapas Rectangulares | NULL | 201 | 2026-05-31
+236 | Tapa redonda AVANTI 350 g | AVANTI | Tapas Redondas | 1 | 155 | 2026-05-31
+132 | Tapa redonda AVANTI 350 g | AVANTI | Tapas Redondas | 1 | 155 | 2026-05-31
+149 | Tapas para Pascualina Redondas Tipo Casera AVANTI 350 gr | AVANTI | Tapas Redondas | 1 | 155 | 2026-05-31
+135 | Tapas para Pascualina Redondas Tipo Casera AVANTI 350 gr | AVANTI | Tapas Redondas | 1 | 155 | 2026-05-31
+154 | Tapas Redondas Light con Separadores AVANTI 350 gr | AVANTI | Tapas Redondas | 3 | 202 | 2026-05-31
+146 | Masa para Pascualina Redonda Hojaldrada LA ESPECIALISTA 350 gr | LA ESPECIALISTA | Tapas Redondas | 1 | 158 | 2026-05-31
+150 | Tapas para Pascualina Redondas Light LA ESPECIALISTA 350 gr | LA ESPECIALISTA | Tapas Redondas | 3 | 204 | 2026-05-31
+133 | Tapas para Pascualina Redondas Tipo Casera LA ESPECIALISTA 350 gr | LA ESPECIALISTA | Tapas Redondas | 1 | 158 | 2026-05-31
+143 | Tapas Redondas Hojaldradas TIENDA INGLESA 29 cm 330 gr | TIENDA INGLESA | Tapas Redondas | NULL | 140 | 2026-05-31
+142 | Tapas Redondas Hojaldradas TIENDA INGLESA 29 cm 330 gr | TIENDA INGLESA | Tapas Redondas | NULL | 140 | 2026-05-31
