@@ -39,3 +39,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# artefactos de desarrollo / salidas generadas (no versionar)
+*.log
+test_out.txt
+monitor_table.txt
+test-types.ts
+test-types2.ts
+read_xlsm.py
+gen-interior-julio-2026.js
+lista-tienda-test.xlsx
+simulacion-interior-julio-2026.xlsx
+.vercelignore.tmp.*
