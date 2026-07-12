@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 
@@ -9,8 +9,45 @@ export default function LoginPage() {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [info, setInfo] = useState<string | null>(null)
+  const [resetting, setResetting] = useState(false)
+  const [cooldown, setCooldown] = useState(0)
   const router = useRouter()
   const supabase = createClient()
+
+  const RESET_COOLDOWN = 60
+
+  // Si un link de recovery cae acá (Site URL = login), reenviarlo a la página de reset
+  useEffect(() => {
+    const hash = window.location.hash
+    if (hash.includes('type=recovery') && hash.includes('access_token')) {
+      router.replace('/auth/reset-password' + hash)
+    }
+  }, [router])
+
+  // Cuenta regresiva del cooldown del botón de recovery
+  useEffect(() => {
+    if (cooldown <= 0) return
+    const t = setTimeout(() => setCooldown(c => c - 1), 1000)
+    return () => clearTimeout(t)
+  }, [cooldown])
+
+  async function handleReset() {
+    if (!email) {
+      setError('Ingresá tu email primero.')
+      return
+    }
+    setResetting(true)
+    setError(null)
+    setInfo(null)
+    await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/auth/reset-password`,
+    })
+    setResetting(false)
+    // Respuesta genérica: no revelamos si el email existe o no (anti-enumeración)
+    setInfo('Si el email está registrado, te enviamos un link para restablecer la contraseña. Revisá tu bandeja.')
+    setCooldown(RESET_COOLDOWN)
+  }
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault()
@@ -80,12 +117,31 @@ export default function LoginPage() {
             </div>
           )}
 
+          {info && (
+            <div className="bg-green-50 border border-green-200 rounded-lg px-4 py-3 text-sm text-green-700">
+              {info}
+            </div>
+          )}
+
           <button
             type="submit"
             disabled={loading}
             className="w-full bg-red-600 hover:bg-red-700 disabled:bg-red-400 text-white font-medium py-2.5 px-4 rounded-lg transition text-sm"
           >
             {loading ? 'Ingresando...' : 'Ingresar'}
+          </button>
+
+          <button
+            type="button"
+            onClick={handleReset}
+            disabled={resetting || cooldown > 0}
+            className="w-full text-center text-sm text-gray-500 hover:text-red-600 transition disabled:opacity-50 disabled:hover:text-gray-500"
+          >
+            {resetting
+              ? 'Enviando…'
+              : cooldown > 0
+              ? `Reenviar en ${cooldown}s`
+              : '¿Olvidaste tu contraseña?'}
           </button>
         </form>
       </div>
