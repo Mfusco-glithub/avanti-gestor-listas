@@ -7,14 +7,15 @@ import { ChevronLeft, Download, Send } from 'lucide-react'
 export default async function ActualizacionDetallePage({
   params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
+  const { id } = await params
   const supabase = await createClient()
 
   const { data: actualizacion } = await supabase
     .from('gl_actualizaciones')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', id)
     .single()
 
   if (!actualizacion) notFound()
@@ -22,18 +23,18 @@ export default async function ActualizacionDetallePage({
   const { data: items } = await supabase
     .from('gl_actualizacion_items')
     .select('*, gl_skus(cod_interno, descripcion, familia), gl_cadenas(nombre)')
-    .eq('actualizacion_id', params.id)
+    .eq('actualizacion_id', id)
     .limit(200)
 
   const { data: archivos } = await supabase
     .from('gl_archivos')
     .select('*, gl_cadenas(nombre)')
-    .eq('actualizacion_id', params.id)
+    .eq('actualizacion_id', id)
 
   const { data: envios } = await supabase
     .from('gl_envios')
     .select('*, gl_cadenas(nombre)')
-    .eq('actualizacion_id', params.id)
+    .eq('actualizacion_id', id)
 
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
