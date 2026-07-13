@@ -28,9 +28,12 @@ export async function middleware(request: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser()
   const { pathname } = request.nextUrl
 
-  // El callback de auto-login setea la sesión client-side (hash tokens → cookie),
-  // así que debe ser accesible aún sin cookie de sesión previa.
-  if (pathname.startsWith('/auth/callback')) {
+  // callback (auto-login) y reset-password (recovery) setean la sesión client-side
+  // desde los tokens del hash → deben ser accesibles sin cookie de sesión previa.
+  if (
+    pathname.startsWith('/auth/callback') ||
+    pathname.startsWith('/auth/reset-password')
+  ) {
     return supabaseResponse
   }
 
