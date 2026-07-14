@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 
 /**
@@ -16,7 +15,6 @@ import { createClient } from '@/lib/supabase/client'
  * forma de establecer la cookie de sesión desde un origin externo.
  */
 export default function AuthCallbackPage() {
-  const router = useRouter()
   const [error, setError] = useState<string | null>(null)
   // Capturar el hash SINCRÓNICAMENTE en el primer render del cliente, antes de
   // cualquier efecto — así nada puede consumirlo/limpiarlo entre medio.
@@ -33,13 +31,12 @@ export default function AuthCallbackPage() {
     const supabase = createClient()
 
     function entrar() {
-      console.log('[CB] 4. redirect → limpiando URL y navegando a /dashboard')
-      window.history.replaceState(null, '', '/auth/callback')
-      router.replace('/dashboard')
-      router.refresh()
-      setTimeout(() => {
-        console.log('[CB] 4.5 (a 3s) → pathname actual =', window.location.pathname)
-      }, 3000)
+      console.log('[CB] 4. redirect → navegación completa a /dashboard')
+      // Navegación completa del navegador (NO el client router del App Router, que
+      // colgaba tras el replaceState manual). Determinística. location.replace (no
+      // .assign) → /auth/callback#tokens no queda en el historial del popup, así los
+      // tokens no son recuperables con el botón Atrás.
+      window.location.replace('/dashboard')
     }
 
     async function run() {
@@ -66,7 +63,7 @@ export default function AuthCallbackPage() {
       }
     }
     run()
-  }, [router])
+  }, [])
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
