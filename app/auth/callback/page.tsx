@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 
@@ -18,38 +18,54 @@ import { createClient } from '@/lib/supabase/client'
 export default function AuthCallbackPage() {
   const router = useRouter()
   const [error, setError] = useState<string | null>(null)
+  // Capturar el hash SINCRÓNICAMENTE en el primer render del cliente, antes de
+  // cualquier efecto — así nada puede consumirlo/limpiarlo entre medio.
+  const hashRef = useRef<string>(typeof window !== 'undefined' ? window.location.hash : '')
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.hash.slice(1))
+    const hash = hashRef.current
+    console.log('[CB] 1. montado → hash_len=', hash.length)
+    const params = new URLSearchParams(hash.slice(1))
     const access_token = params.get('access_token')
     const refresh_token = params.get('refresh_token')
+    console.log('[CB] 2. tokens → has_access=', !!access_token, 'has_refresh=', !!refresh_token)
 
     const supabase = createClient()
 
     function entrar() {
-      // Limpiar los tokens de la URL antes de navegar (no quedan en el historial)
+      console.log('[CB] 4. redirect → limpiando URL y navegando a /dashboard')
       window.history.replaceState(null, '', '/auth/callback')
       router.replace('/dashboard')
       router.refresh()
+      setTimeout(() => {
+        console.log('[CB] 4.5 (a 3s) → pathname actual =', window.location.pathname)
+      }, 3000)
     }
 
-    if (access_token && refresh_token) {
-      supabase.auth.setSession({ access_token, refresh_token }).then(({ error }) => {
-        if (error) {
-          setError(error.message)
+    async function run() {
+      try {
+        if (access_token && refresh_token) {
+          const { error } = await supabase.auth.setSession({ access_token, refresh_token })
+          console.log('[CB] 3. setSession →', error ? 'ERROR: ' + error.message : 'OK')
+          if (error) {
+            setError('No se pudo iniciar sesión: ' + error.message)
+            return
+          }
+          entrar()
           return
         }
-        entrar()
-      })
-      return
+        // Hash vacío (recarga con la URL ya limpia): si ya hay sesión, entrar.
+        const { data } = await supabase.auth.getSession()
+        console.log('[CB] 3. getSession (sin hash) →', data.session ? 'hay sesión' : 'sin sesión')
+        if (data.session) entrar()
+        else setError('Faltan tokens de sesión en la URL')
+      } catch (e) {
+        const msg = e instanceof Error ? e.message : String(e)
+        console.log('[CB] 3. EXCEPTION →', msg)
+        setError('No se pudo iniciar sesión: ' + msg)
+      }
     }
-
-    // Hash vacío (p.ej. recarga con la URL ya limpia): si ya hay sesión, entrar;
-    // si no, error legible.
-    supabase.auth.getSession().then(({ data }) => {
-      if (data.session) entrar()
-      else setError('Faltan tokens de sesión en la URL')
-    })
+    run()
   }, [router])
 
   return (
