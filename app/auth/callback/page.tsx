@@ -24,24 +24,32 @@ export default function AuthCallbackPage() {
     const access_token = params.get('access_token')
     const refresh_token = params.get('refresh_token')
 
-    if (!access_token || !refresh_token) {
-      setError('Faltan tokens de sesión en la URL')
-      return
+    const supabase = createClient()
+
+    function entrar() {
+      // Limpiar los tokens de la URL antes de navegar (no quedan en el historial)
+      window.history.replaceState(null, '', '/auth/callback')
+      router.replace('/dashboard')
+      router.refresh()
     }
 
-    const supabase = createClient()
-    supabase.auth
-      .setSession({ access_token, refresh_token })
-      .then(({ error }) => {
+    if (access_token && refresh_token) {
+      supabase.auth.setSession({ access_token, refresh_token }).then(({ error }) => {
         if (error) {
           setError(error.message)
           return
         }
-        // Limpiar los tokens de la URL antes de navegar (no quedan en el historial)
-        window.history.replaceState(null, '', '/auth/callback')
-        router.replace('/dashboard')
-        router.refresh()
+        entrar()
       })
+      return
+    }
+
+    // Hash vacío (p.ej. recarga con la URL ya limpia): si ya hay sesión, entrar;
+    // si no, error legible.
+    supabase.auth.getSession().then(({ data }) => {
+      if (data.session) entrar()
+      else setError('Faltan tokens de sesión en la URL')
+    })
   }, [router])
 
   return (
