@@ -70,23 +70,33 @@ export async function GET(request: Request) {
     }
     const todosMonitorIds = todosMonitores.map((m) => m.monitor_id)
 
-    // 6. Precios en el periodo (batch para todas las cadenas)
-    const { data: precios, error: preciosError } = await supabase
-      .from('pm_precios')
-      .select('monitor_id, precio, fecha')
-      .in('monitor_id', todosMonitorIds)
-      .gte('fecha', fechaDesde.toISOString())
-      .not('precio', 'is', null)
+    // 6-7. Precio máximo por monitor, agregado EN LA BASE (anti-promo).
+    //
+    // Antes esto traía las filas crudas de pm_precios y calculaba el máximo en un
+    // bucle acá. Eran 34.132 filas contra el tope de 1000 de PostgREST: el tablero
+    // se calculaba sobre 19 monitores de los 626 con precios en la ventana, con
+    // HTTP 200 y sin warning. Y sin ORDER BY, cuáles 19 podía cambiar entre dos
+    // requests seguidos.
+    //
+    // Paginar no era la salida: 34.132 filas son 35 vueltas, por encima del techo
+    // de traerTodo(). La RPC devuelve una fila por monitor (626, holgado bajo el
+    // tope) y mide 28 ms. Ver supabase/migrations/20260912000001, que además
+    // documenta la paridad verificada contra este mismo cálculo.
+    //
+    // La ventana va como parámetro y no fija en la función: hay 75 monitores cuyo
+    // máximo difiere entre 4 y 12 semanas.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data: maximos, error: maxError } = await (supabase as any).rpc(
+      'pm_precio_max_por_monitor',
+      { p_monitor_ids: todosMonitorIds, p_desde: fechaDesde.toISOString() }
+    )
 
-    if (preciosError) throw preciosError
+    if (maxError) throw maxError
 
-    // 7. Precio máximo por monitor
     const maxPrecioPorMonitor: Record<number, number> = {}
-    for (const p of precios ?? []) {
-      const precio = parseFloat(String(p.precio))
-      if (!maxPrecioPorMonitor[p.monitor_id] || precio > maxPrecioPorMonitor[p.monitor_id]) {
-        maxPrecioPorMonitor[p.monitor_id] = precio
-      }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    for (const m of (maximos ?? []) as any[]) {
+      maxPrecioPorMonitor[m.monitor_id] = parseFloat(String(m.precio_max))
     }
 
     // 8. Productos con precio (incluye cadena)
