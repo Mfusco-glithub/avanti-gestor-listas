@@ -128,11 +128,18 @@ docs/               DEVLOG.md (bugs y decisiones) y DATA-FIXES.md (fixes de dato
   importación, que la levanta entera, no corre riesgo todavía.
   Un lote lleno nunca prueba que era el último.
 - **La agregación pesada va en la base, no en JS.** El máximo anti-promo de
-  `/posicionamiento` salía de traer 34.132 filas de `pm_precios` y reducirlas en
-  un bucle: PostgREST devolvía 1000 y el tablero se calculaba sobre 19 monitores
-  de 626. Paginar no alcanzaba (35 vueltas, arriba del techo de `traerTodo()`).
-  Hoy lo resuelve la RPC `pm_precio_max_por_monitor`. Ante una agregación sobre
-  decenas de miles de filas, el camino es una función en la base.
+  `/posicionamiento` salía de traer ~40.000 filas de `pm_precios` y reducirlas en
+  un bucle; PostgREST devolvía 1000. Lo que se degradaba era **la exactitud de
+  cada máximo, no la cobertura**: llegaban 602 de los 638 monitores, pero con
+  1,66 filas de historia cada uno en vez de ~64. Un max sobre 2 muestras solo
+  puede quedar por debajo del real, así que la competencia se veía más barata de
+  lo que estuvo. Paginar no alcanzaba (40 vueltas, arriba del techo de
+  `traerTodo()`). Hoy lo resuelve la RPC `pm_precio_max_por_monitor`.
+- **Para medir qué devuelve PostgREST, preguntale a PostgREST.** La misma
+  consulta con `LIMIT 1000` en el editor SQL de Supabase devuelve **19**
+  monitores distintos; por la API son **602**. El plan es otro. Un `curl` con
+  `Prefer: count=exact` y el `Content-Range` de la respuesta (`0-999/39978`) es
+  la medición válida; un SQL que se le parece, no.
 - **`pm_precios` y `pm_monitoring` son VISTAS, no tablas** (las tablas base son
   `mp_listings` y `mp_canales`, del Price Monitor). `pg_indexes` sobre una vista
   devuelve vacío **siempre**: ese vacío no significa "tabla sin indexar".
