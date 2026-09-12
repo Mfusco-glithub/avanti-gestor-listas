@@ -2,6 +2,63 @@
 
 Registro cronológico de bugs, decisiones y fixes no obvios. Entradas nuevas arriba.
 
+## 2026-09-12 — El "19 de 626" era un artefacto del editor SQL, no producción
+
+Al justificar el fix del anti-promo afirmé que el tablero "se calculaba sobre
+**19 monitores de 626**". **El número existe pero no describe producción**, y
+quedó escrito en la migración `20260912000001`, el `CLAUDE.md` y varios mensajes
+de commit (esos no se tocan).
+
+### Cómo se cayó
+
+Marcelo midió el tablero real antes del deploy: **306 grupos**. Como los
+productos sin `grupo_comparable` entran uno por fila (`route.ts:270`, clave
+`sin_<producto_id>`) y un monitor ausente del mapa de máximos no aporta ninguna
+fila (`productosConPrecio` itera ese mapa, `route.ts:103`), 306 filas exigen
+cientos de monitores. Con 19 no se llega. Simulado en SQL, el código viejo
+habría mostrado **13 grupos**, no 306.
+
+Dos números medidos, incompatibles. Uno estaba mal.
+
+### La medición que lo resolvió
+
+Contra la **API real** (PostgREST con la anon key, misma forma que el route:
+`select` + `IN` de los 638 monitores activos + `fecha` + `precio not null`):
+
+| | |
+|---|---|
+| `Content-Range` | `0-999/39978` — HTTP 206, tope 1000 confirmado |
+| monitores distintos en las 1000 filas | **602** de 638 activos |
+| filas por monitor | **1,66**, contra ~64 disponibles |
+
+**El "19" salía del editor SQL de Supabase**, corriendo la misma consulta con
+`LIMIT 1000`. Plan distinto: el editor barre las tablas base en orden físico y
+las filas salen agrupadas por monitor; PostgREST no. Medí con una herramienta
+que se parecía a la del app pero no era la del app — dos veces, incluida la
+"remedición" que hice justamente para verificar.
+
+### Qué degradaba el truncamiento, entonces
+
+**La exactitud de cada máximo, no la cobertura.** Llegaban casi todos los
+monitores, pero con ~2 precios de historia cada uno en vez de ~64. Un máximo
+sobre 2 muestras solo puede quedar **por debajo** del real, nunca por encima: el
+tablero mostraba a la competencia **más barata de lo que estuvo**. Y sin
+`ORDER BY`, el mismo request podía dar números distintos.
+
+Eso explica los 306 grupos sin contradicción: 602 monitores cubren casi todos
+los productos, así que las filas estaban; lo que estaba mal era el número dentro
+de cada una.
+
+### La lección
+
+**Para medir qué devuelve una API, preguntale a la API.** Un SQL equivalente no
+es equivalente: el plan lo elige el motor, no la semántica. Acá la forma válida
+era un `curl` con `Prefer: count=exact` leyendo el `Content-Range`.
+
+Es la misma familia que el `pg_indexes` vacío sobre `pm_precios` — que es una
+vista — de más temprano hoy: **un resultado que sale de la herramienta
+equivocada no es una medición, y se siente igual que una.**
+
 ## 2026-09-12 — Relevamiento de claves Supabase y procedimiento de migración
 
 **Disparador:** aparecieron claves de Supabase commiteadas en **otro** repo y se
