@@ -145,10 +145,6 @@ docs/               DEVLOG.md (bugs y decisiones) y DATA-FIXES.md (fixes de dato
   módulo.)
 - **El repo de GitHub es público** (`Mfusco-glithub/avanti-gestor-listas`).
   Todo lo que se commitee acá es legible por cualquiera.
-- **`.vercel/project.json` tiene el `orgId` viejo.** Dice
-  `tdATNFOcdvLcr0yhvWy0w2aW`; el proyecto vive en
-  `team_oCW6ccAEgFYqVyCuBWtIeYrK`. El deploy por git no se ve afectado, pero
-  `vercel` desde la CLI local apunta mal o da 403.
 - **`app/api/tmp-monitor/route.ts` escribe un archivo con `fs.writeFileSync` a
   una ruta absoluta de Windows** (`D:\Flowstica\...\monitor_table.txt`). Es un
   script de diagnóstico disfrazado de route: revienta en Vercel. No es referencia
