@@ -34,7 +34,6 @@ Deploy en Vercel (proyecto `avanti-gestor-listas`, Node 20.x), base Supabase
   a `gl_lista_precios` desde un paso externo; no hay código de divisor por hoja
   (`docs/DATA-FIXES.md`). El único `/1.25` del repo es cosmético, en el header
   de `lib/generadores/xlsx-interior.ts:5`.
-- **No tiene tests.** `package.json` no define script ni dependencias de test.
 - **`README.md` es el de `create-next-app`** — no describe nada del proyecto.
   El setup real está en `SETUP.md` (ojo: sus conteos de seed son de mayo-2026 y
   ya no cuadran — dice 362 SKUs, hoy hay 305).
@@ -119,10 +118,6 @@ docs/               DEVLOG.md (bugs y decisiones) y DATA-FIXES.md (fixes de dato
   referencia ni lo mantengas**: el camino vivo es importación → simulador →
   verificación → listas. Sigue linkeado en el Sidebar, que es lo único que lo
   mantiene alcanzable.
-- **El config de PostCSS es `postcss.config.js` (Tailwind v3), y es el único.**
-  Next resuelve con `findConfigPath` (`node_modules/next/dist/lib/find-config.js`)
-  en orden fijo, y el `.js` gana sobre el `.mjs`. Si alguna vez reaparece un
-  `postcss.config.mjs`, es letra muerta: no se lee.
 - **`gl_lista_precios` ya pasó el tope de 1000 de PostgREST** (1024 filas al
   12-sep-2026), que trunca con HTTP 200 y sin warning. Usá `traerTodo()` de
   `lib/supabase/paginado.ts` para toda lectura de una tabla que pueda crecer,
@@ -163,8 +158,6 @@ docs/               DEVLOG.md (bugs y decisiones) y DATA-FIXES.md (fixes de dato
   14-jul-2026). No lo "modernices" de vuelta a navegación client-side.
 - **`lib/generadores/xlsx-disco.ts` pesa 72 KB** casi todo logos en base64
   (líneas 42-43). No lo abras entero para buscar lógica.
-- **El mail se manda sin adjunto.** `lib/email/index.ts:67` tiene el TODO: el
-  Excel se descarga a mano de Storage.
 - **La historia de git empieza el 6-jul-2026** aunque el código es de mayo. No
   busques el porqué de nada anterior a esa fecha en los commits.
 
