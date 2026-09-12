@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createClient, createAdminClient } from '@/lib/supabase/server'
+import { traerTodo } from '@/lib/supabase/paginado'
 
 // v2 - usa createAdminClient para escrituras
 const TENANT_ID = '00000000-0000-0000-0000-000000000001'
@@ -32,15 +33,35 @@ export async function GET() {
   try {
     const supabase = await createClient()
 
-    const [{ data: pmCadenas }, { data: lpCadenas }] = await Promise.all([
-      supabase.from('pm_monitoring').select('cadena').eq('activo', true),
-      supabase.from('gl_lista_precios').select('cadena').eq('tenant_id', TENANT_ID),
+    // Ambas se paginan: gl_lista_precios pasó las 1024 filas y esta lectura,
+    // que trae la tabla entera, venía truncando en 1000 sin avisar. pm_monitoring
+    // está en 638 activos pero la escribe el Price Monitor (otro proyecto), así
+    // que crece sin que nos enteremos. El .order() va sobre la PK (id /
+    // monitor_id) y no sobre 'cadena': con empates el orden entre requests no
+    // está garantizado y la paginación misma repetiría o saltearía filas.
+    const [pmCadenas, lpCadenas] = await Promise.all([
+      traerTodo<{ cadena: string }>((desde, hasta) =>
+        supabase
+          .from('pm_monitoring')
+          .select('cadena')
+          .eq('activo', true)
+          .order('monitor_id')
+          .range(desde, hasta)
+      ),
+      traerTodo<{ cadena: string }>((desde, hasta) =>
+        supabase
+          .from('gl_lista_precios')
+          .select('cadena')
+          .eq('tenant_id', TENANT_ID)
+          .order('id')
+          .range(desde, hasta)
+      ),
     ])
 
     const cadenas = [
       ...new Set([
-        ...(pmCadenas ?? []).map((r) => normalizarCadena(r.cadena)),
-        ...(lpCadenas ?? []).map((r) => normalizarCadena(r.cadena)),
+        ...pmCadenas.map((r) => normalizarCadena(r.cadena)),
+        ...lpCadenas.map((r) => normalizarCadena(r.cadena)),
       ]),
     ]
       .filter(Boolean)
