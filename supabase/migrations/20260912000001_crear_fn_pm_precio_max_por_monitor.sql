@@ -9,18 +9,37 @@
 --
 -- HALLAZGO: app/api/posicionamiento/route.ts:74 lee pm_precios con
 --   .in('monitor_id', todosMonitorIds).gte('fecha', desde).not('precio','is',null)
--- y calcula en JavaScript el maximo por monitor. Esa consulta devuelve 34.132
--- filas para la ventana de 8 semanas, contra el tope de 1000 de PostgREST, con
--- HTTP 200 y sin warning. El precio maximo por monitor es la base anti-promo de
--- TODO el tablero de posicionamiento.
+-- y calcula en JavaScript el maximo por monitor. Esa consulta devuelve ~40.000
+-- filas para la ventana de 8 semanas (34.132 al mediodia del 12-sep, 39.978 al
+-- cierre: el Price Monitor escribe continuamente), contra el tope de 1000 de
+-- PostgREST. El precio maximo por monitor es la base anti-promo de TODO el
+-- tablero de posicionamiento.
 --
--- MEDIDO EL 12-SEP-2026, y es peor que "faltaban filas": como las filas vienen
--- agrupadas por monitor, esas 1000 alcanzaban solo 19 MONITORES de los 626 que
--- tienen precios en la ventana. El tablero se estaba calculando sobre el 3% de
--- los monitores, no sobre el 3% de un promedio parejo. Y sin ORDER BY, cuales
--- 19 no era determinístico: podia cambiar entre dos requests seguidos.
+-- QUE SE DEGRADABA (texto corregido; la cronica del error esta en
+-- docs/DEVLOG.md, entrada del 12-sep-2026). Lo que degradaba el truncamiento era
+-- la EXACTITUD DE CADA MAXIMO, no la cobertura de monitores.
 --
--- POR QUE NO ALCANZA CON PAGINAR: 34.132 filas son 35 vueltas de 1000, por
+-- MEDIDO contra la API real (PostgREST con la anon key, misma forma de consulta
+-- que el route: select + IN de los 638 monitores activos + fecha + precio not
+-- null):
+--   * Content-Range: 0-999/39978 -> HTTP 206, tope 1000, 39.978 filas totales;
+--   * 602 monitores distintos en esas 1000 filas, de 638 activos;
+--   * 1,66 filas por monitor, contra ~64 disponibles.
+--
+-- O sea: llegaban casi todos los monitores, pero con ~2 precios de historia cada
+-- uno en vez de ~64. Un max sobre 2 muestras solo puede quedar POR DEBAJO del
+-- real, nunca por encima: el tablero mostraba a la competencia MAS BARATA de lo
+-- que estuvo. Y sin ORDER BY, cuales filas llegan no es determinístico, asi que
+-- el mismo request podia dar numeros distintos.
+--
+-- OJO CON LA HERRAMIENTA DE MEDICION, que es la trampa de fondo: la misma
+-- consulta con LIMIT 1000 en el editor SQL devuelve 19 monitores, no 602. El
+-- plan es otro — el editor barre las tablas base en orden fisico y las filas
+-- salen agrupadas por monitor; PostgREST no. El "19 de 626" que se afirmo
+-- primero salio de ahi y NO describe produccion. Para saber que devuelve la
+-- API hay que preguntarle a la API, no a un SQL que se le parece.
+--
+-- POR QUE NO ALCANZA CON PAGINAR: ~40.000 filas son ~40 vueltas de 1000, por
 -- encima del techo de 20 de traerTodo() (lib/supabase/paginado.ts). Y el fondo
 -- del asunto es que traer 34k filas al servidor de Node para quedarse con 626
 -- maximos es la forma equivocada del problema: la agregacion va en la base.
