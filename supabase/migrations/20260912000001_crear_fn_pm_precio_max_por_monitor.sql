@@ -1,4 +1,11 @@
--- 12-sep-2026 — NO APLICADA. La aplica Marcelo a mano.
+-- 12-sep-2026 — APLICADA en produccion (avanti-comercial / lnldlsslkorjilmiumrj).
+--
+-- VERIFICACIONES CORRIDAS AL APLICAR (las 8 de abajo):
+--   V3 paridad  -> 0 filas de diferencia contra la agregacion directa;
+--   V5 perdida  -> 19 monitores con el tope de 1000, contra 626 reales,
+--                  sobre 34.132 filas;
+--   V6 salida   -> 626 filas, holgado bajo el tope;
+--   V7 costo    -> 28 ms de ejecucion con todo en cache.
 --
 -- HALLAZGO: app/api/posicionamiento/route.ts:74 lee pm_precios con
 --   .in('monitor_id', todosMonitorIds).gte('fecha', desde).not('precio','is',null)
@@ -22,10 +29,13 @@
 -- (?semanas=, botones de 4/8/12 en la UI, arbitrario por query param). Una
 -- vista no toma parametros; fijarla en 8 semanas romperia en silencio los
 -- botones de 4 y 12. La funcion recibe el corte ya calculado, igual que hoy.
+-- MEDIDO: hay 75 monitores cuyo precio maximo DIFIERE entre la ventana de 4 y
+-- la de 12 semanas. O sea que la ventana no es un detalle de configuracion: es
+-- el resultado. Una vista con la ventana fija habria devuelto el numero
+-- equivocado en esos 75, sin fallar ni avisar.
 --
 -- FORMA: aditiva pura. CREATE OR REPLACE de una funcion nueva. No toca
--- pm_precios ni ninguna tabla, no borra nada, no cambia ninguna policy. Si algo
--- sale mal, el route viejo sigue funcionando igual de mal que antes, no peor.
+-- pm_precios ni ninguna tabla ni vista, no borra nada, no cambia ninguna policy.
 --
 -- PARIDAD CON EL CALCULO ACTUAL (verificado sobre los datos del 12-sep-2026):
 --   * precio es numeric, asi que max() y el parseFloat() del JS ordenan igual
@@ -35,7 +45,7 @@
 --   * el JS tiene una divergencia latente: usa `if (!max[mid] || precio > max[mid])`
 --     y `!0` es true, asi que un precio 0 guardado seria pisado por CUALQUIER
 --     precio posterior, aun menor. Hoy no se dispara (0 filas con precio = 0 o
---     negativo en las 68.408 de la tabla). max() no tiene ese problema.
+--     negativo en las 68.408 filas de pm_precios). max() no tiene ese problema.
 --
 -- SEGURIDAD: SECURITY INVOKER a proposito, NO definer. El route lee pm_precios
 -- hoy con la anon key, o sea que ese acceso ya existe; la funcion no debe
@@ -45,12 +55,15 @@
 -- GRANTS: las funciones nacen con EXECUTE para PUBLIC. Se revoca y se otorga
 -- explicito, misma lista blanca que 20260821000001_revoke_truncate_gl_tables.sql.
 --
--- DEUDA QUE NO CIERRA ESTE CHANGE-SET: pm_precios (68.408 filas) NO TIENE NINGUN
--- INDICE, ni siquiera PK. Esta funcion filtra por (monitor_id, fecha), asi que
--- hoy resuelve con un scan completo. Un indice en (monitor_id, fecha) seria
--- aditivo y la aceleraria mucho, pero pm_precios es del Price Monitor, no de
--- este repo: va en otra migracion y la decide ese proyecto. Ver abajo el EXPLAIN
--- para medirlo antes de decidir.
+-- OJO CON LOS NOMBRES: pm_precios y pm_monitoring son VISTAS, no tablas. Las
+-- tablas base que aparecen en el EXPLAIN son mp_listings y mp_canales, del
+-- Price Monitor. Una vista no tiene indices ni PK propios, asi que no tiene
+-- sentido preguntarle a pg_indexes por pm_precios: devuelve vacio SIEMPRE, y ese
+-- vacio no significa "tabla sin indexar".
+--
+-- DEUDA DEL INDICE: CERRADA POR MEDICION, no hace falta. El EXPLAIN (V7) dio
+-- 28 ms con todo en cache para las 68.408 filas. No se toca nada de las tablas
+-- base del Price Monitor.
 
 CREATE OR REPLACE FUNCTION public.pm_precio_max_por_monitor(
   p_monitor_ids integer[],
@@ -176,8 +189,10 @@ GRANT EXECUTE ON FUNCTION public.pm_precio_max_por_monitor(integer[], timestampt
 --      pm_precio_max_por_monitor(ids.v, now() - interval '8 weeks');
 --
 --
--- 7. Costo real, para decidir sobre el indice de la DEUDA de arriba. Si aparece
---    un Seq Scan de pm_precios, es el scan de 68.408 filas.
+-- 7. Costo real. MEDIDO AL APLICAR: 28 ms de ejecucion con todo en cache, sobre
+--    68.408 filas — por eso la deuda del indice quedo cerrada sin tocar nada.
+--    Recordar que pm_precios es una VISTA: lo que se ve escanear son sus tablas
+--    base (mp_listings, mp_canales), no "pm_precios" en si.
 --
 -- EXPLAIN (ANALYZE, BUFFERS)
 -- SELECT * FROM (SELECT array_agg(monitor_id) AS v FROM pm_monitoring WHERE activo IS TRUE) ids,
