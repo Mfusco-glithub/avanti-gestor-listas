@@ -145,6 +145,19 @@ docs/               DEVLOG.md (bugs y decisiones) y DATA-FIXES.md (fixes de dato
     importación, que la levanta entera, todavía no corre riesgo.
   Al agregar cualquier query nueva sobre `gl_lista_precios`: filtrá por cadena
   **y** vigencia, o paginá. Un lote lleno nunca prueba que era el último.
+- **La anon key queda horneada en el bundle en build time.** Está literal en 5
+  chunks de `.next/static/chunks/` (entre ellos `(app)/layout`, `login` y
+  `auth/callback`). Cambiar la variable en Vercel **no alcanza**: el JS ya
+  compilado sigue mandando la clave vieja. Hay que redeployar con **"Use
+  existing Build Cache" DESTILDADO**. (La service key no se filtra al bundle:
+  solo la lee `lib/supabase/server.ts` y ningún `'use client'` importa ese
+  módulo.)
+- **El repo de GitHub es público** (`Mfusco-glithub/avanti-gestor-listas`).
+  Todo lo que se commitee acá es legible por cualquiera.
+- **`.vercel/project.json` tiene el `orgId` viejo.** Dice
+  `tdATNFOcdvLcr0yhvWy0w2aW`; el proyecto vive en
+  `team_oCW6ccAEgFYqVyCuBWtIeYrK`. El deploy por git no se ve afectado, pero
+  `vercel` desde la CLI local apunta mal o da 403.
 - **`app/api/tmp-monitor/route.ts` escribe un archivo con `fs.writeFileSync` a
   una ruta absoluta de Windows** (`D:\Flowstica\...\monitor_table.txt`). Es un
   script de diagnóstico disfrazado de route: revienta en Vercel. No es referencia
