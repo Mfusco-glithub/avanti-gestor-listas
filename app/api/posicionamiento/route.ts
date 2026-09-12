@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { traerTodo } from '@/lib/supabase/paginado'
 
 export const dynamic = 'force-dynamic'
 export const fetchCache = 'force-no-store'
@@ -185,17 +186,37 @@ export async function GET(request: Request) {
 
     const avantiPorCadenaGrupo: Record<string, Record<string, number>> = {}
     if (avantiSkuIds.length > 0) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { data: avantiLista } = await (supabase as any)
-        .from('gl_lista_precios')
-        .select('cadena, sku_id, pvp_sugerido, vigencia_desde')
-        .in('cadena', cadenasSeleccionadas)
-        .in('sku_id', avantiSkuIds)
-        .not('pvp_sugerido', 'is', null)
-        .order('vigencia_desde', { ascending: false })
+      // Paginado: filtra por cadena pero no por vigencia, así que trae todas las
+      // vigencias históricas. Con todas las cadenas seleccionadas daba 954 filas
+      // al 12-sep-2026, a 46 del tope de 1000 de PostgREST — habría empezado a
+      // truncar solo, en silencio y sin que nadie tocara el código.
+      //
+      // El orden por vigencia_desde DESC no es incidental: el dedup de abajo se
+      // queda con la PRIMERA fila de cada (cadena, grupo), o sea la vigencia más
+      // nueva. Se le agrega 'id' como desempate para que el orden sea total: con
+      // solo vigencia_desde hay miles de empates y la paginación podía repetir o
+      // saltear filas entre vueltas, que acá significa quedarse con el precio de
+      // una vigencia vieja.
+      const avantiLista = await traerTodo<{
+        cadena: string
+        sku_id: string
+        pvp_sugerido: number
+        vigencia_desde: string
+      }>((desde, hasta) =>
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (supabase as any)
+          .from('gl_lista_precios')
+          .select('cadena, sku_id, pvp_sugerido, vigencia_desde')
+          .in('cadena', cadenasSeleccionadas)
+          .in('sku_id', avantiSkuIds)
+          .not('pvp_sugerido', 'is', null)
+          .order('vigencia_desde', { ascending: false })
+          .order('id')
+          .range(desde, hasta)
+      )
 
       const seenKey = new Set<string>()
-      for (const lp of avantiLista ?? []) {
+      for (const lp of avantiLista) {
         const info = skuGrupoInfo[lp.sku_id]
         if (!info) continue
         const grupoKey = `${info.familia}||${info.sub_familia}||${info.grupo_comparable}`
