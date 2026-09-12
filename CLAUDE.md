@@ -24,7 +24,7 @@ Deploy en Vercel (proyecto `avanti-gestor-listas`, Node 20.x), base Supabase
   sistemas de ai-platform. El repo **lee** `pm_monitoring`, `pm_precios`,
   `pm_productos`, `vw_pm_ultimo_precio` y `vw_margen_cadena` (Price Monitor)
   pero no los crea ni los mantiene.
-- **`supabase/migrations/` NO es el esquema.** Hay 2 archivos; el primero crea
+- **`supabase/migrations/` NO es el esquema.** Hay 3 archivos; el primero crea
   10 tablas y en producción hay 28 `gl_*`. Tablas centrales del flujo actual
   (`gl_lista_precios`, `gl_simulaciones`, `gl_simulacion_items`,
   `gl_descuento_cadena`, `gl_marca_segmento`, `gl_ref_precios_comercio`) se
@@ -99,7 +99,7 @@ lib/generadores/    un archivo por formato de Excel de salida (exceljs)
 lib/importacion/    parse-lista-xls.ts — parser multi-hoja, multi-formato
 lib/supabase/       client.ts (browser) y server.ts (SSR + createAdminClient)
 lib/email/          plantilla + envío por Resend
-supabase/migrations/ solo 2 migraciones — ver "Qué NO es"
+supabase/migrations/ solo 3 migraciones — ver "Qué NO es"
 types/database.ts   tipos generados de la base (~88 KB)
 docs/               DEVLOG.md (bugs y decisiones) y DATA-FIXES.md (fixes de datos prod)
 ```
@@ -119,32 +119,28 @@ docs/               DEVLOG.md (bugs y decisiones) y DATA-FIXES.md (fixes de dato
   referencia ni lo mantengas**: el camino vivo es importación → simulador →
   verificación → listas. Sigue linkeado en el Sidebar, que es lo único que lo
   mantiene alcanzable.
-- **Hay dos configs de PostCSS y `postcss.config.mjs` nunca se lee.** Next busca
-  con `findConfigPath` (`node_modules/next/dist/lib/find-config.js`) en orden
-  fijo: `.postcssrc.json`, `postcss.config.json`, `.postcssrc.js`,
-  **`postcss.config.js`**, `postcss.config.mjs`, `postcss.config.cjs` — el `.js`
-  gana siempre. Verificado además por build: compila (exit 0) y emite CSS de
-  Tailwind v3 (`--tw-*`, 39 KB), pese a que el `.mjs` declara
-  `@tailwindcss/postcss` (Tailwind v4) que **no está instalado**. O sea: el
-  `.mjs` es letra muerta que describe un stack que no existe acá. Si editás el
-  de CSS y no pasa nada, estás editando el archivo equivocado.
-- **Ninguna consulta pagina** y `gl_lista_precios` **ya pasó el tope de 1000 de
-  PostgREST** (1024 filas al 12-sep-2026). No hay helper de paginado; el único
-  `.range()` es la grilla de SKUs (`app/api/configuracion/skus/route.ts:50`).
-  Medido el 12-sep-2026:
-  - `app/api/configuracion/cadenas/route.ts:37` lee `gl_lista_precios` **entera**
-    (sin filtro de cadena ni vigencia) para derivar la lista de cadenas:
-    **está truncando hoy**. Sobrevive porque solo arma un `Set` de nombres, así
-    que rompe únicamente si alguna cadena vive exclusivamente en las filas que
-    se caen — y como la query no tiene `ORDER BY`, cuáles se caen no es
-    determinístico.
-  - `app/api/posicionamiento/route.ts:190` filtra por cadena pero no por
-    vigencia: con todas las cadenas seleccionadas da **954 filas**, a 46 del
-    tope. Es la próxima en romperse, y lo va a hacer en silencio.
-  - `gl_skus` está holgada: 289 activos de 305 totales. El cargador de la
-    importación, que la levanta entera, todavía no corre riesgo.
-  Al agregar cualquier query nueva sobre `gl_lista_precios`: filtrá por cadena
-  **y** vigencia, o paginá. Un lote lleno nunca prueba que era el último.
+- **El config de PostCSS es `postcss.config.js` (Tailwind v3), y es el único.**
+  Next resuelve con `findConfigPath` (`node_modules/next/dist/lib/find-config.js`)
+  en orden fijo, y el `.js` gana sobre el `.mjs`. Si alguna vez reaparece un
+  `postcss.config.mjs`, es letra muerta: no se lee.
+- **`gl_lista_precios` ya pasó el tope de 1000 de PostgREST** (1024 filas al
+  12-sep-2026), que trunca con HTTP 200 y sin warning. Usá `traerTodo()` de
+  `lib/supabase/paginado.ts` para toda lectura de una tabla que pueda crecer,
+  con `.order()` sobre una columna **única** (la PK): sin orden estable la
+  paginación misma repite o saltea filas. **La mayoría de las consultas del repo
+  todavía no paginan** — al tocar cualquiera, revisá si le corresponde.
+  `gl_skus` está holgada (289 activos de 305), así que el cargador de la
+  importación, que la levanta entera, no corre riesgo todavía.
+  Un lote lleno nunca prueba que era el último.
+- **La agregación pesada va en la base, no en JS.** El máximo anti-promo de
+  `/posicionamiento` salía de traer 34.132 filas de `pm_precios` y reducirlas en
+  un bucle: PostgREST devolvía 1000 y el tablero se calculaba sobre 19 monitores
+  de 626. Paginar no alcanzaba (35 vueltas, arriba del techo de `traerTodo()`).
+  Hoy lo resuelve la RPC `pm_precio_max_por_monitor`. Ante una agregación sobre
+  decenas de miles de filas, el camino es una función en la base.
+- **`pm_precios` y `pm_monitoring` son VISTAS, no tablas** (las tablas base son
+  `mp_listings` y `mp_canales`, del Price Monitor). `pg_indexes` sobre una vista
+  devuelve vacío **siempre**: ese vacío no significa "tabla sin indexar".
 - **La anon key queda horneada en el bundle en build time.** Está literal en 5
   chunks de `.next/static/chunks/` (entre ellos `(app)/layout`, `login` y
   `auth/callback`). Cambiar la variable en Vercel **no alcanza**: el JS ya
@@ -200,11 +196,22 @@ La importación **no tiene UI**: se dispara por POST multipart a
   (último commit). Queda **deuda abierta y declarada** en la migración: el mismo
   patrón alcanza a 109 de las 153 tablas no-`gl_` de esa base.
 - **14-jul-2026** — cerrada la saga del auto-login Gerencia→Gestor.
+- **12-sep-2026** — arreglado el truncamiento de PostgREST: helper `traerTodo()`,
+  paginados `configuracion/cadenas` y `posicionamiento`, y el máximo anti-promo
+  movido a la RPC `pm_precio_max_por_monitor` (migración `20260912000001`,
+  aplicada). Borrado `postcss.config.mjs`.
 - **Pendientes acordados, listos para ejecutar:**
   - sacar los `console.log('[CB] …')` de `app/auth/callback/page.tsx` (se dejaron
     ~1 semana para confirmar estabilidad; el plazo venció en julio);
-  - borrar la rama muerta `actualizaciones/*` con sus dependencias exclusivas;
-  - borrar `postcss.config.mjs`, confirmado que Next nunca lo lee;
-  - paginar `configuracion/cadenas/route.ts:37` — ya trunca (ver Trampas).
+  - borrar la rama muerta `actualizaciones/*` con sus dependencias exclusivas.
+- **Deudas anotadas, sin decidir:**
+  - **regenerar `types/database.ts`.** La llamada a la RPC en
+    `posicionamiento/route.ts` va como `(supabase as any).rpc` con
+    `eslint-disable` porque los tipos generados no conocen la función. Eso apaga
+    el chequeo justo en la llamada nueva: si mañana cambia la firma, el código
+    no se queja. No es un problema de estilo.
+  - **18 errores de tipos preexistentes** en `posicionamiento/route.ts` (270 en
+    todo el repo), ocultos por `ignoreBuildErrors`. No los introdujo ningún
+    cambio reciente; queda decidir aparte si se limpian.
 - **A medias:** adjuntar el Excel al mail de Resend; migraciones del repo
   desincronizadas del esquema real.
